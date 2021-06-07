@@ -1,8 +1,6 @@
-import datetime
 import time 
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
 from plyer import notification
 
 prevData = None
@@ -18,5 +16,8 @@ while True:
       message = data[1].get_text(),
       timeout = 10*60*60
     )
+  t = time.localtime()
+  current_time = time.strftime("%H:%M:%S", t)
+  print(current_time, data[1].get_text(), sep="  ")
   prevData = data
   time.sleep(10*60)
